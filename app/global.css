@@ -1,0 +1,30 @@
+:root{
+    --primary: #6e8898;
+    --text: #FFFFFF;
+    --bg: #2e5266
+   
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--bg);
+    color: var(--text)
+}
