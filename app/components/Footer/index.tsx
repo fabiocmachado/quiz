@@ -1,9 +1,12 @@
+import footerStyles from "./footer.module.css";
+
 export function Footer () {
     return (
-      
-        <p>
-        Designed by Fábio Machado
-        </p>
+        <div  className={footerStyles.footer}>
+            <p>
+            Designed by Fábio Machado
+            </p>
+        </div>
        
-    )
+    );
 }

@@ -1,7 +1,6 @@
-.homeScreen{
-    background: url("/images/bg.cinza");
+.screen{
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     padding-top: 40px;
     padding-left: 13px;
     padding-right: 13px;
@@ -9,7 +8,8 @@
 }
 
 @media (min-width: 600px) {
-    .homeScreen {
+    .screen {
+        background-image: url ("/public/images/bg.cinza.jpg");
         padding-left: 10%;
         padding-right: 10%;
         padding-top: 50px}
