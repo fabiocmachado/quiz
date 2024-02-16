@@ -15,7 +15,15 @@ export default function Page() {
         >
         <p style={{marginBottom: "32px"}}>Test your knowledge about NFL.</p>
         <p style={{marginBottom: "32px"}}></p>
-                <p>FORMS / BUTTON</p>
+                <form>
+                    <div>
+                        <input name="playerName"/>
+                    </div>   
+                        <button>
+                                Play
+                        </button>   
+                     
+                </form>
                 <Link href ="/game"> Play</Link>
         </Card>
         <Footer />
