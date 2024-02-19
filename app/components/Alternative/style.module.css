@@ -1,3 +1,14 @@
 .component{
     display: block;
+    background-color: #6e8898;
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: opacity .2s;
+
+}
+
+.component:hover,
+.component.focus{
+    opacity: .6;
 }

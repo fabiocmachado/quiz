@@ -1,4 +1,5 @@
 "use client"
+
 import React from "react";
 import { useRouter } from "next/navigation"
 
@@ -16,8 +17,8 @@ const answerStates = {
     ERROR: "ERROR",
     SUCCESS: "SUCCESS"
 } as const;
-""
-export default function GameScreen ( ) {
+
+export default function GameScreen () {
     const router = useRouter();
     const [answerState, setAnswerState] = React.useState<keyof typeof answerStates>(answerStates.DEFAULT);
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
@@ -25,6 +26,18 @@ export default function GameScreen ( ) {
     const questionNumber = currentQuestion +1;
     const question = questions[currentQuestion];
     const isLastQuestion = questionNumber === questions.length;
+
+    React.useEffect(() => {
+        if(isLastQuestion) {
+            const totalPoints = userAnswers.reduce ((_totalPoints, currentAnswer) => {
+                if(currentAnswer === true ) return _totalPoints + 1;
+                return _totalPoints;                            
+            }, 0);
+            alert(`The test is finished! Your score is: ${totalPoints} `);
+            router.push("/");
+            return;
+        }
+    }, [userAnswers]);
 
     return (
         <main className={pageStyles.screen} style={ {flex: 1} }>
@@ -58,24 +71,21 @@ export default function GameScreen ( ) {
                         setAnswerState(answerStates.ERROR);
                     }
                     setTimeout (() => {
-                        if(isLastQuestion) {
-                            const totalPoints = userAnswers.reduce ((_totalPoints, currentAnswer) => {
-                                if(currentAnswer === true ) return _totalPoints + 1;
-                                return _totalPoints;                            
-                            }, 0);
-                            alert(`The test is finished! Your socre is: ${totalPoints} `);
-                            router.push("/");
-                            return;
-                        }
+                       if(isLastQuestion) return;
                     setCurrentQuestion(currentQuestion + 1);
+                    setAnswerState(answerStates.DEFAULT);
                 }, 2*1000 )
                 }}>
                     {question.alternatives.map ((alternative, index) => (
+                       <div 
+                       key={alternative + index} >   
+                        
                        <Alternative 
-                       key={alternative + index}
+                       
                        label={alternative}
                        order= {index}
                        />
+                       </div>
                     ))}
                     {answerState === answerStates.DEFAULT && (                    
                     <button>
